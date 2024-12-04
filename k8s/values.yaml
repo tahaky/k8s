@@ -66,7 +66,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
   hosts:
-    - host: sosyalplaka.com
+    - host: sosyalplaka.ayrotek.com
       paths:
         - path: /ayrotek
           pathType: Prefix
