@@ -79,7 +79,7 @@ ingress:
 networkPolicy:
   enabled: true  # NetworkPolicy'nin aktif olup olmayacağını kontrol edin
   podSelector:
-    app: issuer  # Pod'ların label'ı  
+    app: tutorial-helm  # Pod'ların label'ı  
   egress:
     - to:
         - ipBlock:
