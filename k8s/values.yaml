@@ -81,11 +81,11 @@ networkPolicy:
   podSelector:
     app: issuer  # Pod'ların label'ı  
   egress:
-    - to:
-        - ipBlock:
-        cidr: "0.0.0.0/0"  # Tüm IP bloklarına erişim
-      ports: []  # Tüm portlara erişim izni
-             # İzin verilen port (örneğin, HTTP)
+  - to:
+      - ipBlock:
+      cidr: "0.0.0.0/0"  # Tüm IP bloklarına erişim
+    ports: []  # Tüm portlara erişim izni
+
 
   tls: []
   #  - secretName: chart-example-tls
