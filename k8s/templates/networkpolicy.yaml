@@ -1,0 +1,28 @@
+{{- if .Values.networkPolicy.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ .Release.Name }}-network-policy
+  namespace: {{ .Release.Namespace }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- range $key, $value := .Values.networkPolicy.podSelector }}
+      {{ $key }}: {{ $value }}
+      {{- end }}
+  policyTypes:
+  - Egress
+  egress:
+  {{- range .Values.networkPolicy.egress }}
+  - to:
+    {{- range .to }}
+    - ipBlock:
+        cidr: {{ .cidr | quote }}  # CIDR burada doğru şekilde alınıyor
+    {{- end }}
+    ports:
+    {{- range .ports }}
+    - protocol: {{ .protocol | quote }}
+      port: {{ .port }}
+    {{- end }}
+  {{- end }}
+{{- end }}
