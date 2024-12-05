@@ -75,6 +75,26 @@ ingress:
               name: hello-tutorial-helm
               port:
                 number: 80
+
+networkPolicy:
+  enabled: true  # NetworkPolicy'nin aktif olup olmayacağını kontrol edin
+  podSelector:
+    app: issuer  # Pod'ların label'ı  
+  egress:
+    - to:
+        - ipBlock:
+          cidr: 192.168.1.0/24  # Belirli bir dış IP adresi
+      ports:
+        - protocol: TCP
+          port: 9702               # İzin verilen port (örneğin, HTTP)
+        - protocol: TCP
+          port: 9704               # İzin verilen port (örneğin, HTTP)
+        - protocol: TCP
+          port: 9706               # İzin verilen port (örneğin, HTTP)
+        - protocol: TCP
+          port: 9708  
+             # İzin verilen port (örneğin, HTTP)
+
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
