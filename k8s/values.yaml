@@ -83,16 +83,8 @@ networkPolicy:
   egress:
     - to:
         - ipBlock:
-          cidr: 192.168.1.0/24  # Belirli bir dış IP adresi
-      ports:
-        - protocol: TCP
-          port: 9702               # İzin verilen port (örneğin, HTTP)
-        - protocol: TCP
-          port: 9704               # İzin verilen port (örneğin, HTTP)
-        - protocol: TCP
-          port: 9706               # İzin verilen port (örneğin, HTTP)
-        - protocol: TCP
-          port: 9708  
+            cidr: "0.0.0.0/0"  # Tüm IP bloklarına erişim
+      ports: []  # Tüm portlara erişim izni
              # İzin verilen port (örneğin, HTTP)
 
   tls: []
