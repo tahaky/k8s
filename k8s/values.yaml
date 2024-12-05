@@ -83,7 +83,7 @@ networkPolicy:
   egress:
     - to:
         - ipBlock:
-            cidr: "0.0.0.0/0"  # Tüm IP bloklarına erişim
+        cidr: "0.0.0.0/0"  # Tüm IP bloklarına erişim
       ports: []  # Tüm portlara erişim izni
              # İzin verilen port (örneğin, HTTP)
 
