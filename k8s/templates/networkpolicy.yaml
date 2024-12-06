@@ -1,13 +1,28 @@
+{{- if .Values.networkPolicy.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-all-traffic
+  name: {{ .Release.Name }}-network-policy
+  namespace: {{ .Release.Namespace }}
 spec:
-  podSelector: {}  # Tüm pod'ları seçer
+  podSelector:
+    matchLabels:
+      {{- range $key, $value := .Values.networkPolicy.podSelector }}
+      {{ $key }}: {{ $value }}
+      {{- end }}
   policyTypes:
-  - Ingress
   - Egress
-  ingress:          # Tüm gelen trafiğe izin verir
-  - {}
-  egress:           # Tüm giden trafiğe izin verir
-  - {}
+  egress:
+  {{- range .Values.networkPolicy.egress }}
+  - to:
+    {{- range .to }}
+    - ipBlock:
+        cidr: {{ .cidr | quote }}  # CIDR burada doğru şekilde alınıyor
+    {{- end }}
+    ports:
+    {{- range .ports }}
+    - protocol: {{ .protocol | quote }}
+      port: {{ .port }}
+    {{- end }}
+  {{- end }}
+{{- end }}
