@@ -77,7 +77,7 @@ ingress:
                 number: 80
 
 networkPolicy:
-  enabled: true  # NetworkPolicy'nin aktif olup olmayacağını kontrol edin
+  enabled: false  # NetworkPolicy'nin aktif olup olmayacağını kontrol edin
   podSelector:
     app: tutorial-helm  # Pod'ların label'ı  
   egress:
