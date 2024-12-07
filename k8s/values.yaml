@@ -65,7 +65,7 @@ ingress:
     - secretName: my-tls-secret
       hosts:
         - health.sosyalplaka.com
-    - secretName: harbor-ca-cert
+    - secretName: sosyalplaka-cert
 
 
   annotations:
