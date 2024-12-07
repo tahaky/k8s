@@ -87,7 +87,7 @@ networkPolicy:
       ports: []
              # İzin verilen port (örneğin, HTTP)
 
-  tls: []
+  tls: 
     - secretName: harbor-ca-cert
       hosts:
         - health.sosyalplaka.com
