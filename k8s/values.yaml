@@ -62,10 +62,11 @@ ingress:
   enabled: true
   className: nginx
   tls:
-  - secretName: my-tls-secret
-    - hosts:
-      - health.sosyalplaka.com
-      secretName: harbor-ca-cert
+    - secretName: my-tls-secret
+      hosts:
+        - health.sosyalplaka.com
+    - secretName: harbor-ca-cert
+
 
   annotations:
     kubernetes.io/ingress.class: nginx
