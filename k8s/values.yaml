@@ -62,10 +62,9 @@ ingress:
   enabled: true
   className: nginx
   tls:
-    - secretName: my-tls-secret
+    - secretName: sosyalplaka-cert
       hosts:
         - health.sosyalplaka.com
-    - secretName: sosyalplaka-cert
 
 
   annotations:
